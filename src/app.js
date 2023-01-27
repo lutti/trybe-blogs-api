@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+// Adicionar os routers aqui Lutti
+
 app.use(express.json());
 
 // ...
