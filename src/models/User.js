@@ -12,11 +12,11 @@ const UserSchema = (sequelize, DataTypes) => {
       underscored: true
     })
 
-    // CourseTable.associate = ({ Student }) => {
-    //   CourseTable.hasMany(Student, {
-    //     foreignKey: 'id_course'
-    //   })
-    // }
+    UserTable.associate = ({ BlogPost }) => {
+      UserTable.hasMany(BlogPost, {
+        foreignKey: 'user_id'
+      })
+    }
 
   return UserTable;
 };
