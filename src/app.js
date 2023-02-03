@@ -1,12 +1,13 @@
 const express = require('express');
+const loginRouter = require('./routers/login.router');
 
 // ...
 
 const app = express();
 
-// Adicionar os routers aqui Lutti
-
 app.use(express.json());
+
+app.use('/login', loginRouter);
 
 // ...
 
