@@ -8,6 +8,14 @@ const findUserByLogin = async ({ email, password }) => {
   return user;
 };
 
+const createUser = async ({
+  displayName,
+  email,
+  password,
+  image,
+}) => User.createUser(displayName, email, password, image);
+
 module.exports = {
   findUserByLogin,
+  createUser,
 };
