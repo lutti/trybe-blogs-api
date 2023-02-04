@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { generateToken } = require('../utils/jwt');
+const jwt = require('../utils/jwt');
 
 const authenticate = async ({ email, password }) => {
   if (!email || !password) {
@@ -19,11 +19,17 @@ const authenticate = async ({ email, password }) => {
     throw error;
   }
 
-  const token = generateToken(user.dataValues);
+  const token = jwt.generateToken(user.dataValues);
 
   return { token };
 };
 
+const authenticateToken = async (token) => {
+  const payload = jwt.authenticateToken(token);
+  return payload;
+};
+
 module.exports = {
   authenticate,
+  authenticateToken,
 };

@@ -10,18 +10,20 @@ const generateToken = (payload) =>
 
 const authenticateToken = async (token) => {
   if (!token) {
-    const error = new Error('missing auth token');
+    const error = new Error();
+    error.message = 'Token not found';
     error.status = 401;
-    throw error;
+    return error;
   }
 
   try {
     const verificationResponse = await jwt.verify(token, JWT_SECRET);
     return verificationResponse;
   } catch (err) {
-    const error = new Error('jwt malformed');
+    const error = new Error();
+    error.message = 'Expired or invalid token';
     error.status = 401;
-    throw error;
+    return error;
   }
 };
 
