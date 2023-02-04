@@ -12,7 +12,10 @@ const findCategoryByName = async (name) => {
   return user;
 };
 
+const getAll = async () => Category.findAll();
+
 module.exports = {
   createCategory,
   findCategoryByName,
+  getAll,
 };
