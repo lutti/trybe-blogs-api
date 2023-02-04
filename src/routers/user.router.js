@@ -15,5 +15,8 @@ router.post('/',
 router.get('/',
   authenticate,
   userController.getAllUsers);
-
+router.get('/:id',
+  authenticate,
+  userController.getUserById);
+  
 module.exports = router;

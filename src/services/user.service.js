@@ -9,16 +9,24 @@ const getAll = async () => {
 
 const findUserByLogin = async ({ email, password }) => {
   const user = await User.findOne({
-  attributes: ['id', 'displayName', 'email'],
-  where: { email, password },
+    attributes: ['id', 'displayName', 'email'],
+    where: { email, password },
   });
   return user;
 };
 
 const findUserByEmail = async ({ email }) => {
   const user = await User.findOne({
-  attributes: ['id', 'displayName', 'email'],
-  where: { email },
+    attributes: ['id', 'displayName', 'email'],
+    where: { email },
+  });
+  return user;
+};
+
+const findUserById = async (id) => {
+  const user = await User.findOne({
+    attributes: ['id', 'displayName', 'email', 'image'],
+    where: { id: +id },
   });
   return user;
 };
@@ -33,6 +41,7 @@ const createUser = async ({
 module.exports = {
   findUserByLogin,
   findUserByEmail,
+  findUserById,
   createUser,
   getAll,
 };
